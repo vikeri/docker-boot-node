@@ -7,7 +7,7 @@ MAINTAINER Viktor Eriksson <viktor.eriksson2@gmail.com>
 RUN apk add --update nodejs
 
 # Boot
-RUN apk --update add curl ca-certificates \
+RUN apk --update add curl patch ca-certificates \
 && curl -fsSLo /usr/local/bin/boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh \
 && chmod 755 /usr/local/bin/boot
 
