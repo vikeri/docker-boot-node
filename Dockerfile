@@ -1,8 +1,6 @@
 FROM anapsix/alpine-java:jdk
 MAINTAINER Viktor Eriksson <viktor.eriksson2@gmail.com>
 
-# CMD "sh" "-c" "echo nameserver 8.8.8.8 > /etc/resolv.conf"
-
 # Nodejs
 RUN apk add --update nodejs
 
@@ -14,7 +12,6 @@ RUN apk --update add curl patch ca-certificates \
 # Set environment variable to indicate that it is running in CI
 ENV CI true
 
-COPY boot-react-native /m2/mattsum/boot-react-native/
 COPY boot.properties /home/
 ENV BOOT_HOME /.boot
 ENV BOOT_AS_ROOT yes
@@ -30,7 +27,4 @@ WORKDIR /app
 RUN boot web -s doesnt/exist 
 RUN boot repl -e '(System/exit 0)'
 
-# Installs boot-react-native
-# RUN mkdir brn
-# RUN curl -L https://github.com/mjmeintjes/boot-react-native/archive/de752982cfc850f80c67ee472b3891b404844221.tar.gz | tar xz -C brn
-# RUN (cd brn && boot install)
+RUN npm install -g yarn
