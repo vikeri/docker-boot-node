@@ -17,6 +17,7 @@ ENV BOOT_HOME /.boot
 ENV BOOT_AS_ROOT yes
 ENV BOOT_LOCAL_REPO /m2
 ENV BOOT_JVM_OPTIONS=-Xmx2g
+ENV BOOT_WATCHERS_DISABLE yes
 
 RUN (mkdir /temp && cd temp && curl -Lo build.boot https://raw.githubusercontent.com/mjmeintjes/boot-react-native/master/example/build.boot)
 RUN (cd temp && boot build)
